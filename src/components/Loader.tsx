@@ -38,7 +38,7 @@ const Loader = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#14213d]"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#14213d] p-4"
     >
       <AnimatePresence>
         {showHello && (
@@ -47,7 +47,7 @@ const Loader = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5 }}
-            className="text-4xl font-bold text-[#fca311]"
+            className="text-4xl font-bold text-[#fca311] text-center"
           >
             Hello World 👋...
           </motion.h1>
@@ -63,7 +63,7 @@ const Loader = () => {
             className="flex flex-col items-center"
           >
             <motion.h1
-              className="text-4xl font-bold text-[#fca311] mb-4"
+              className="text-4xl font-bold text-[#fca311] mb-4 text-center"
             >
               Dev Majxr welcomes you.
             </motion.h1>

@@ -18,11 +18,11 @@ const Navbar = () => {
           <Image
             src='/images/logo.png'
             alt='Thulani Mthembu Logo'
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             className='rounded-full'
           />
-          <span className='font-bold text-xl'>Dev-Majxr</span>
+          <span className='font-bold text-lg sm:text-xl'>Dev-Majxr</span>
         </Link>
         <div className='flex items-center space-x-4'>
           <ThemeToggle />
