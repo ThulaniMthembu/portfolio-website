@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-rgb: 229, 229, 229;
+}
+
+.dark {
+	--foreground-rgb: 245, 245, 245;
+	--background-rgb: 38, 40, 42;
+}
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: rgb(var(--background-rgb));
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+/* Theme Toggle Styles */
+.switch input:checked ~ .decoration {
+	transform: translateX(-20px);
+	width: 10px;
+	height: 10px;
+	background: white;
+	box-shadow: -12px 0 0 white, -6px 0 0 1.6px white, 5px 15px 0 1px white,
+		1px 17px 0 white, 10px 17px 0 white;
+}
+
+.switch input:checked + .slider {
+	background-color: #fca311;
+}
+
+.switch input:checked + .slider:before {
+	transform: translateX(100%);
+	box-shadow: inset 15px -4px 0px 15px #14213d, 0 0 10px 0px #14213d;
+}
