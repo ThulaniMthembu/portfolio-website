@@ -1,8 +1,9 @@
-"use client"
+"use client"; // This is required for client-side components
 
-import Link from 'next/link'
-import { ArrowRight, Code, Smartphone, Zap, FileDown, Eye } from 'lucide-react'
-import { motion } from 'framer-motion'
+import Link from 'next/link';
+import { ArrowRight, Code, Smartphone, Zap, FileDown, Eye } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 
 export default function Home() {
   return (
@@ -60,5 +61,5 @@ export default function Home() {
         </Link>
       </section>
     </div>
-  )
+  );
 }

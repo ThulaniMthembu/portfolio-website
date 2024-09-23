@@ -1,10 +1,8 @@
-"use client"
-
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
-const Loader = () => {
+const Loader = ({ onComplete }: { onComplete: () => void }) => {
   const [loading, setLoading] = useState(true)
   const [showHello, setShowHello] = useState(true)
   const [showDevMajxr, setShowDevMajxr] = useState(false)
@@ -21,6 +19,7 @@ const Loader = () => {
 
     const timer3 = setTimeout(() => {
       setLoading(false)
+      onComplete()  // Notify parent that loading is complete
     }, 7000)
 
     return () => {
@@ -28,7 +27,7 @@ const Loader = () => {
       clearTimeout(timer2)
       clearTimeout(timer3)
     }
-  }, [])
+  }, [onComplete])
 
   if (!loading) return null
 
@@ -59,7 +58,7 @@ const Loader = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5}}
+            transition={{ duration: 1.5 }}
             className="flex flex-col items-center"
           >
             <motion.h1
