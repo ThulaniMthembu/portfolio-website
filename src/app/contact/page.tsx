@@ -18,24 +18,46 @@ interface EmailJSResponseStatus {
 
 export default function Contact() {
   const [toaster, setToaster] = useState<ToasterState>({ message: '', type: null })
+  const [isSending, setIsSending] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsSending(true)
     
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+    const templateIdUser = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_USER
+    const templateIdOwner = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_OWNER
     const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID
 
-    if (!serviceId || !templateId || !userId) {
+    if (!serviceId || !templateIdUser || !templateIdOwner || !userId) {
       console.error('EmailJS environment variables are not set')
       setToaster({ message: 'Configuration error. Please try again later.', type: 'error' })
+      setIsSending(false)
       return
     }
 
     try {
-      const result = await emailjs.sendForm(serviceId, templateId, formRef.current!, userId)
-      console.log('EmailJS success:', result.text)
+      // Send email to user
+      await emailjs.send(serviceId, templateIdUser, {
+        to_email: formRef.current?.reply_to.value,
+        from_name: 'Thulani Mthembu',
+        message: formRef.current?.message.value,
+        from_email: 'thulanim457@gmail.com',
+        reply_to: 'thulanim457@gmail.com'
+      }, userId)
+      
+      // Send email to owner
+      await emailjs.send(serviceId, templateIdOwner, {
+        to_name: 'Thulani',
+        from_name: formRef.current?.from_name.value,
+        from_email: formRef.current?.reply_to.value,
+        phone: formRef.current?.phone_number.value,
+        message: formRef.current?.message.value,
+        reply_to: formRef.current?.reply_to.value
+      }, userId)
+      
+      console.log('EmailJS success: Emails sent to user and owner')
       setToaster({ message: 'Message sent successfully!', type: 'success' })
       if (formRef.current) {
         formRef.current.reset()
@@ -44,16 +66,14 @@ export default function Contact() {
       console.error('EmailJS error:', error)
       if (typeof error === 'object' && error !== null && 'text' in error) {
         const emailJSError = error as EmailJSResponseStatus
-        if (emailJSError.text === 'The recipients address is empty') {
-          setToaster({ message: 'Error: Recipient address is not set. Please contact the site administrator.', type: 'error' })
-        } else {
-          setToaster({ message: `Failed to send message: ${emailJSError.text}`, type: 'error' })
-        }
+        setToaster({ message: `Failed to send message: ${emailJSError.text}`, type: 'error' })
       } else if (error instanceof Error) {
         setToaster({ message: `An error occurred: ${error.message}`, type: 'error' })
       } else {
         setToaster({ message: 'An unexpected error occurred. Please try again.', type: 'error' })
       }
+    } finally {
+      setIsSending(false)
     }
 
     setTimeout(() => {
@@ -135,16 +155,10 @@ export default function Contact() {
             className="bg-primary text-foreground px-6 py-2 rounded-md hover:bg-opacity-90 transition-colors font-medium"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            disabled={isSending}
           >
-            Send Message
+            {isSending ? 'Sending message...' : 'Send Message'}
           </motion.button>
-          
-          {/* Hidden input for recipient email */}
-          <input 
-            type="hidden" 
-            name="to_email" 
-            value="thulanim457@gmail.com"
-          />
         </form>
       </div>
 
