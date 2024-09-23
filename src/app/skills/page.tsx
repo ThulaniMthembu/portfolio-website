@@ -15,9 +15,9 @@ const skills = [
     items: ["Node.js (Introductory)", "Express.js (Introductory)"]
   },
   {
-    category: "Version Control",
+    category: "Version Control & Deployment",
     icon: <GitBranch className="w-12 h-12 mb-4 text-purple-500" />,
-    items: ["Git", "GitHub"]
+    items: ["Git", "GitHub", "Netlify", "GitHub Pages", "CI/CD Pipelines"]
   },
   {
     category: "Soft Skills",

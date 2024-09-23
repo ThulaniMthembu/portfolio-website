@@ -65,7 +65,7 @@ const Loader = () => {
             <motion.h1
               className="text-4xl font-bold text-[#fca311] mb-4 text-center"
             >
-              Dev Majxr welcomes you.
+              Excited to have you here!
             </motion.h1>
             <Image
               src="/images/dev-majxr.jpg"
