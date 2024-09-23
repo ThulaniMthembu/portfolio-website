@@ -8,11 +8,11 @@ import Footer from '@/components/Footer'
 import Loader from '@/components/Loader'
 import AnimatedBackground from '@/components/AnimatedBackground'
 import { useEffect, useState } from 'react'
-
+import { metadata } from './metadata'
 
 const inter = Inter({ subsets: ['latin'] })
 
-
+export const Metadata = metadata
 
 export default function RootLayout({
   children,
