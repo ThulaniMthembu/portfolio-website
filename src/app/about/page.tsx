@@ -52,7 +52,7 @@ export default function About() {
             <ul className="list-disc list-inside mb-4 text-sm md:text-base">
               <li>Developing responsive websites for small businesses</li>
               <li>Contributing to open-source projects on GitHub</li>
-              <li>Participating in coding challenges and hackathons</li>
+              <li>Participating in coding challenges and hackathons such as LeetCode</li>
             </ul>
           </AboutSection>
         </div>
@@ -83,7 +83,6 @@ export default function About() {
               <li>Advanced React patterns and performance optimization</li>
               <li>Server-side rendering and static site generation with Next.js</li>
               <li>State management with Redux and Context API</li>
-              <li>GraphQL and Apollo Client</li>
             </ul>
           </AboutSection>
         </div>
