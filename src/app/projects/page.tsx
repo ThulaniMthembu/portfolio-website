@@ -1,8 +1,8 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import ProjectCard from '@/components/ProjectCard'
+import StructuredData from '@/components/StructuredData'
 
 const projects = [
   {
@@ -36,41 +36,55 @@ const projects = [
 ]
 
 export default function Projects() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Thulani Mthembu's Projects",
+    "description": "A collection of web development projects by Thulani Mthembu",
+    "url": "https://devmajxr.co.za/projects",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": projects.map((project, index) => ({
+        "@type": "WebSite",
+        "position": index + 1,
+        "name": project.title,
+        "description": project.description,
+        "url": project.link,
+        "image": `https://devmajxr.co.za${project.image}`,
+        "author": {
+          "@type": "Person",
+          "name": "Thulani Mthembu"
+        },
+        "keywords": project.tags.join(", ")
+      }))
+    }
+  };
+
   return (
-    <div className="container mx-auto px-4 py-24">
-      <h1 className="text-4xl font-bold mb-12 text-left">My Projects</h1>
-      <div className="grid md:grid-cols-2 gap-8">
-        {projects.map((project, index) => (
-          <motion.div 
-            key={index} 
-            className="bg-[#e5e5e5] dark:bg-[#14213d] rounded-lg shadow-lg overflow-hidden"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <Image 
-              src={project.image} 
-              alt={project.title} 
-              width={600} 
-              height={400} 
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-6">
-              <h2 className="text-2xl font-semibold mb-2 text-[#000000] dark:text-[#ffffff]">{project.title}</h2>
-              <p className="text-[#14213d] dark:text-[#e5e5e5] mb-4">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag, tagIndex) => (
-                  <span key={tagIndex} className="bg-[#fca311] text-[#000000] px-2 py-1 rounded text-sm">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <Link href={project.link} target="_blank" rel="noopener noreferrer" className="bg-[#fca311] text-[#000000] px-4 py-2 rounded hover:bg-opacity-90 transition-colors">
-                View Project
-              </Link>
-            </div>
-          </motion.div>
-        ))}
+    <>
+      <StructuredData data={structuredData} />
+      <div className="container mx-auto px-4 py-24">
+        <motion.h1 
+          className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-gray-100"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          My Projects
+        </motion.h1>
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   )
 }

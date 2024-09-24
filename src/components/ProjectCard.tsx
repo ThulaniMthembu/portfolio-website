@@ -13,7 +13,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, tags, link }) => {
   return (
     <motion.div 
-      className="bg-card text-card-foreground rounded-xl shadow-md overflow-hidden border border-border"
+      className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700 transition-colors duration-300"
       whileHover={{ scale: 1.03 }}
       transition={{ type: "spring", stiffness: 400, damping: 10 }}
     >
@@ -23,20 +23,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, ta
           alt={title} 
           layout="fill"
           objectFit="cover"
-          className="transition-all duration-300 ease-in-out hover:opacity-75"
+          className="transition-all duration-300 ease-in-out"
         />
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-all duration-300">
-          <Link href={link} target="_blank" rel="noopener noreferrer" className="bg-primary text-primary-foreground px-6 py-3 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors">
+          <Link href={link} target="_blank" rel="noopener noreferrer" className="bg-primary text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors">
             View Project
           </Link>
         </div>
       </div>
       <div className="p-6 space-y-4">
         <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
-        <p className="text-muted-foreground">{description}</p>
+        <p className="text-gray-600 dark:text-gray-400">{description}</p>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag, tagIndex) => (
-            <span key={tagIndex} className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-xs font-medium">
+            <span key={tagIndex} className="bg-secondary text-white px-3 py-1 rounded-full text-xs font-medium">
               {tag}
             </span>
           ))}

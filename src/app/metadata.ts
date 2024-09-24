@@ -1,4 +1,4 @@
-import { Metadata } from 'next'; 
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Thulani Mthembu - Web Developer | Dev Majxr',
@@ -7,7 +7,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Thulani Mthembu - Web Developer | Dev Majxr',
     description: 'Portfolio of Thulani Mthembu, a web developer specializing in React and modern web technologies.',
-    url: 'devmajxr.co.za',
+    url: 'https://devmajxr.co.za',
+    siteName: 'Thulani Mthembu Portfolio',
     images: [
       {
         url: 'https://devmajxr.netlify.app/images/logo.png',
@@ -16,6 +17,8 @@ export const metadata: Metadata = {
         alt: 'Thulani Mthembu Portfolio',
       },
     ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
@@ -27,9 +30,22 @@ export const metadata: Metadata = {
         alt: 'Thulani Mthembu Portfolio',
       },
     ],
+    creator: '@devmajxr',
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-site-verification-code',
+    yandex: 'your-yandex-verification-code',
+    yahoo: 'your-yahoo-verification-code',
   },
 }
