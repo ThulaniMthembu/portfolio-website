@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone, Mail, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Toaster from '@/components/Toaster'
 import StructuredData from '@/components/StructuredData'
@@ -101,89 +101,121 @@ export default function Contact() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
     <>
       <StructuredData data={structuredData} />
-      <div className="container mx-auto px-4 py-24">
-        <h1 className="text-4xl font-bold mb-8 text-center">Contact Me</h1>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-            <p className="mb-6">
-              I&apos;m always open to new opportunities and collaborations. Feel free to reach out if you have any questions or just want to say hello!
-            </p>
-            <blockquote className="border-l-4 border-primary pl-4 italic mb-6">
-              &quot;The marathon continues not because it&apos;s easy, but because the journey itself is a testament to our resilience and determination. Keep running forward, no matter how long the road may be.&quot;
-            </blockquote>
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <MapPin className="mr-2 text-primary" />
-                <span>Johannesburg, ZA</span>
-              </div>
-              <div className="flex items-center">
-                <Phone className="mr-2 text-primary" />
-                <span>+27 72 4351 5616</span>
-              </div>
-              <div className="flex items-center">
-                <Mail className="mr-2 text-primary" />
-                <span>thulanim457@gmail.com</span>
-              </div>
-            </div>
-          </div>
-
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="from_name" className="block mb-1 font-medium">Name</label>
-              <input
-                type="text"
-                id="from_name"
-                name="from_name"
-                className="w-full px-3 py-2 border border-accent rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="reply_to" className="block mb-1 font-medium">Email</label>
-              <input
-                type="email"
-                id="reply_to"
-                name="reply_to"
-                className="w-full px-3 py-2 border border-accent rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="phone_number" className="block mb-1 font-medium">Phone Number</label>
-              <input
-                type="tel"
-                id="phone_number"
-                name="phone_number"
-                className="w-full px-3 py-2 border border-accent rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block mb-1 font-medium">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                className="w-full px-3 py-2 border border-accent rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
-                required
-              ></textarea>
-            </div>
-            <motion.button
-              type="submit"
-              className="bg-primary text-foreground px-6 py-2 rounded-md hover:bg-opacity-90 transition-colors font-medium"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              disabled={isSending}
+      <motion.div 
+        className="container mx-auto px-4 py-24 min-h-screen flex items-center"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="w-full max-w-4xl mx-auto bg-gray-100 dark:bg-background-dark shadow-lg rounded-lg overflow-hidden">
+          <div className="md:flex">
+            <motion.div 
+              className="md:w-1/2 p-8 bg-primary text-white"
+              variants={itemVariants}
             >
-              {isSending ? 'Sending message...' : 'Send Message'}
-            </motion.button>
-          </form>
+              <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
+              <p className="mb-6">
+                I&apos;m always open to new opportunities and collaborations. Feel free to reach out if you have any questions or just want to say hello!
+              </p>
+              <blockquote className="border-l-4 border-white pl-4 italic mb-6">
+                &quot;The marathon continues not because it&apos;s easy, but because the journey itself is a testament to our resilience and determination. Keep running forward, no matter how long the road may be.&quot;
+              </blockquote>
+              <div className="space-y-4">
+                <motion.div className="flex items-center" variants={itemVariants}>
+                  <MapPin className="mr-2" />
+                  <span>Johannesburg, ZA</span>
+                </motion.div>
+                <motion.div className="flex items-center" variants={itemVariants}>
+                  <Phone className="mr-2" />
+                  <span>+27 72 4351 5616</span>
+                </motion.div>
+                <motion.div className="flex items-center" variants={itemVariants}>
+                  <Mail className="mr-2" />
+                  <span>thulanim457@gmail.com</span>
+                </motion.div>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="md:w-1/2 p-8 bg-white dark:bg-background-dark"
+              variants={itemVariants}
+            >
+              <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-foreground-dark">Send a Message</h2>
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="from_name" className="block mb-1 font-medium text-gray-700 dark:text-foreground-dark">Name</label>
+                  <input
+                    type="text"
+                    id="from_name"
+                    name="from_name"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-background-dark text-gray-800 dark:text-foreground-dark"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="reply_to" className="block mb-1 font-medium text-gray-700 dark:text-foreground-dark">Email</label>
+                  <input
+                    type="email"
+                    id="reply_to"
+                    name="reply_to"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-background-dark text-gray-800 dark:text-foreground-dark"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone_number" className="block mb-1 font-medium text-gray-700 dark:text-foreground-dark">Phone Number</label>
+                  <input
+                    type="tel"
+                    id="phone_number"
+                    name="phone_number"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-background-dark text-gray-800 dark:text-foreground-dark"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block mb-1 font-medium text-gray-700 dark:text-foreground-dark">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-background-dark text-gray-800 dark:text-foreground-dark"
+                    required
+                  ></textarea>
+                </div>
+                <motion.button
+                  type="submit"
+                  className="w-full bg-primary text-white px-6 py-3 rounded-md hover:bg-opacity-90 transition-colors font-medium flex items-center justify-center"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  disabled={isSending}
+                >
+                  {isSending ? 'Sending...' : 'Send Message'}
+                  <Send className="ml-2" size={18} />
+                </motion.button>
+              </form>
+            </motion.div>
+          </div>
         </div>
-
         {toaster.type && (
           <Toaster
             message={toaster.message}
@@ -191,7 +223,7 @@ export default function Contact() {
             onClose={() => setToaster({ message: '', type: null })}
           />
         )}
-      </div>
+      </motion.div>
     </>
   )
 }

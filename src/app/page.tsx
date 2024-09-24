@@ -1,11 +1,25 @@
 "use client";
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Code, Smartphone, Zap, FileDown, Eye } from 'lucide-react';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { FileDown, Eye } from 'lucide-react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import StructuredData from '@/components/StructuredData';
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    setMounted(true);
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -13,11 +27,6 @@ export default function Home() {
     "alternateName": "Dev Majxr",
     "description": "Web Developer & React Specialist",
     "url": "https://devmajxr.co.za",
-    "sameAs": [
-      "https://github.com/yourgithub",
-      "https://linkedin.com/in/yourlinkedin",
-      "https://twitter.com/yourtwitter"
-    ],
     "jobTitle": "Web Developer",
     "worksFor": {
       "@type": "Organization",
@@ -25,62 +34,103 @@ export default function Home() {
     }
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
+  if (!mounted) return null;
+
   return (
     <>
       <StructuredData data={structuredData} />
-      <div className="container mx-auto px-4 py-24 flex flex-col justify-between min-h-screen">
-        <section className="text-left mb-16">
-          <h1 className="text-4xl font-bold mb-4">Thulani Mthembu</h1>
-          <h2 className="text-2xl mb-4">Web Developer & React Specialist</h2>
-          <p className="mb-6 max-w-2xl">
-            I specialize in crafting modern, responsive web applications that make a difference. Let&apos;s build something amazing together.
-          </p>
-          <p className="italic mb-8">&quot;The Marathon Continues&quot;</p>
-          <div className="flex space-x-4">
-            <Link href="/projects" className="inline-flex items-center bg-gray-500 text-background px-6 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105">
+      <style jsx global>{`
+        @keyframes wobble {
+          0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+          25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+          50% { border-radius: 50% 60% 30% 60% / 30% 70% 50% 60%; }
+          75% { border-radius: 60% 40% 60% 30% / 70% 30% 60% 40%; }
+        }
+        .wobble-border {
+          animation: wobble 15s ease-in-out infinite;
+        }
+      `}</style>
+      <div className="container mx-auto px-4 py-12 flex flex-col justify-between min-h-screen">
+        <motion.section 
+          className="text-left md:text-center mb-16"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants} className="mb-8 relative inline-block">
+            <div className="absolute inset-0 bg-primary opacity-75 wobble-border" style={{ transform: 'scale(1.1)' }}></div>
+            <Image
+              src="/images/Thulani.jpg"
+              alt="Thulani Mthembu"
+              width={180}
+              height={180}
+              className="rounded-full relative z-10"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <h1 className="text-4xl md:text-5xl font-bold mb-3 text-foreground-light dark:text-foreground-dark">Thulani Mthembu</h1>
+            <h2 className="text-2xl md:text-3xl mb-5 text-foreground-light dark:text-foreground-dark">Web Developer & React Specialist</h2>
+          </motion.div>
+          <motion.p variants={itemVariants} className="mb-6 max-w-3xl mx-auto text-lg text-foreground-light dark:text-foreground-dark">
+            I specialize in crafting modern, responsive web applications that make a difference. With a keen eye for detail and a passion for clean, efficient code, I bring ideas to life through innovative web solutions. Let&apos;s build something amazing together that not only meets your needs but exceeds your expectations.
+          </motion.p>
+          <motion.p variants={itemVariants} className="italic mb-8 text-xl text-foreground-light dark:text-foreground-dark">&quot;The Marathon Continues&quot;</motion.p>
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/projects" className="inline-flex items-center justify-center bg-secondary text-foreground-dark px-6 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105 w-full sm:w-auto">
               <Eye className="mr-2" />
               Explore My Work
             </Link>
-            <a href="/resume/Thulani_Mthembu_Resume.pdf" download className="inline-flex items-center bg-primary text-foreground px-6 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105">
+            <a href="/resume/Thulani_Mthembu_Resume.pdf" download className="inline-flex items-center justify-center bg-primary text-foreground-light px-6 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105 w-full sm:w-auto">
               <FileDown className="mr-2" />
               Download Resume
             </a>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        <section className="grid md:grid-cols-3 gap-8 mb-16">
-          <motion.div 
-            className="text-center p-6 bg-accent text-foreground rounded-lg shadow-lg"
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
-          >
-            <Code size={48} className="mx-auto mb-4 text-primary" />
-            <h3 className="text-xl font-semibold mb-2">Clean Code</h3>
-            <p>Writing maintainable and efficient code is my passion.</p>
-          </motion.div>
-          <motion.div 
-            className="text-center p-6 bg-accent text-foreground rounded-lg shadow-lg"
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
-          >
-            <Smartphone size={48} className="mx-auto mb-4 text-primary" />
-            <h3 className="text-xl font-semibold mb-2">Responsive Design</h3>
-            <p>Creating seamless experiences across all devices.</p>
-          </motion.div>
-          <motion.div 
-            className="text-center p-6 bg-accent text-foreground rounded-lg shadow-lg"
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
-          >
-            <Zap size={48} className="mx-auto mb-4 text-primary" />
-            <h3 className="text-xl font-semibold mb-2">Performance Optimized</h3>
-            <p>Building fast and optimized web applications.</p>
-          </motion.div>
-        </section>
-
-        <section className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to start your project?</h2>
-          <Link href="/contact" className="inline-flex items-center bg-gray-500 text-background px-6 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105">
-            Get in Touch <ArrowRight className="ml-2" />
-          </Link>
-        </section>
+        <motion.section 
+          ref={ref}
+          animate={controls}
+          initial="hidden"
+          variants={containerVariants}
+          className="grid md:grid-cols-3 gap-8 mb-16"
+        >
+          {[
+            { icon: "Code", title: "Clean Code", description: "Writing maintainable and efficient code is my passion." },
+            { icon: "Smartphone", title: "Responsive Design", description: "Creating seamless experiences across all devices." },
+            { icon: "Zap", title: "Performance Optimized", description: "Building fast and optimized web applications." }
+          ].map((item, index) => (
+            <motion.div 
+              key={index}
+              className="text-center p-6 bg-background-light dark:bg-background-dark text-foreground-light dark:text-foreground-dark rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
+              variants={itemVariants}
+            >
+              {item.icon === "Code" && <FileDown size={48} className="mx-auto mb-4 text-primary" />}
+              {item.icon === "Smartphone" && <Eye size={48} className="mx-auto mb-4 text-primary" />}
+              {item.icon === "Zap" && <FileDown size={48} className="mx-auto mb-4 text-primary" />}
+              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+              <p>{item.description}</p>
+            </motion.div>
+          ))}
+        </motion.section>
       </div>
     </>
   );
