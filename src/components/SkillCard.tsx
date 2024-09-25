@@ -12,7 +12,7 @@ interface SkillCardProps {
 export default function SkillCard({ category, icon, items }: SkillCardProps) {
   return (
     <motion.div 
-      className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl border border-gray-200 dark:border-gray-700 relative overflow-hidden"
+      className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-xl shadow-lg p-4 transition-all duration-300 hover:shadow-xl border border-gray-200 dark:border-gray-700 relative overflow-hidden h-full"
       whileHover={{ scale: 1.02 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -20,23 +20,23 @@ export default function SkillCard({ category, icon, items }: SkillCardProps) {
     >
       <div className="absolute top-0 left-0 w-full h-full bg-primary opacity-5 dark:opacity-10 z-0"></div>
       <div className="relative z-10">
-        <div className="flex flex-col items-center mb-6 space-y-3">
+        <div className="flex flex-col items-center mb-4 space-y-2">
           <motion.div 
-            className="text-primary text-4xl bg-primary bg-opacity-10 dark:bg-opacity-20 p-3 rounded-full"
+            className="text-primary text-3xl bg-primary bg-opacity-10 dark:bg-opacity-20 p-2 rounded-full"
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.5 }}
           >
             {icon}
           </motion.div>
-          <h2 className="text-2xl font-bold tracking-tight text-secondary dark:text-primary">
+          <h2 className="text-xl font-bold tracking-tight text-secondary dark:text-primary text-center">
             {category}
           </h2>
         </div>
-        <ul className="space-y-3">
+        <ul className="flex flex-wrap justify-center gap-2">
           {items.map((skill, index) => (
             <motion.li 
               key={index}
-              className="flex items-center justify-center bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full px-4 py-2 text-sm font-medium border border-gray-300 dark:border-gray-600"
+              className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full px-3 py-1 text-sm font-medium border border-gray-300 dark:border-gray-600"
               whileHover={{ 
                 scale: 1.03, 
                 backgroundColor: "#fca311", 

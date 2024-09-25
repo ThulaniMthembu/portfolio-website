@@ -41,7 +41,7 @@ export default function Projects() {
     "@type": "CollectionPage",
     "name": "Thulani Mthembu's Projects",
     "description": "A collection of web development projects by Thulani Mthembu",
-    "url": "https://devmajxr.co.za/projects",
+    "url": "https://devmajxr.netlify.app/projects",
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": projects.map((project, index) => ({

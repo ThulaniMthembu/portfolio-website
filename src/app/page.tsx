@@ -26,7 +26,7 @@ export default function Home() {
     "name": "Thulani Mthembu",
     "alternateName": "Dev Majxr",
     "description": "Web Developer & React Specialist",
-    "url": "https://devmajxr.co.za",
+    "url": "https://devmajxr.netlify.app/",
     "jobTitle": "Web Developer",
     "worksFor": {
       "@type": "Organization",

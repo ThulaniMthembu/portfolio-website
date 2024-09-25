@@ -8,22 +8,22 @@ import { motion } from 'framer-motion'
 const skills = [
   {
     category: "Frontend Development",
-    icon: <Code className="w-12 h-12" />,
+    icon: <Code className="w-8 h-8" />,
     items: ["HTML", "CSS", "JavaScript", "React", "Redux", "Sass", "Tailwind CSS", "Next.js", "TypeScript"]
   },
   {
     category: "Backend Development",
-    icon: <Server className="w-12 h-12" />,
+    icon: <Server className="w-8 h-8" />,
     items: ["Node.js (Introductory)", "Express.js (Introductory)"]
   },
   {
     category: "Version Control & Deployment",
-    icon: <GitBranch className="w-12 h-12" />,
+    icon: <GitBranch className="w-8 h-8" />,
     items: ["Git", "GitHub", "Netlify", "GitHub Pages", "CI/CD Pipelines"]
   },
   {
     category: "Soft Skills",
-    icon: <Brain className="w-12 h-12" />,
+    icon: <Brain className="w-8 h-8" />,
     items: [
       "Problem-solving",
       "Critical thinking",
@@ -57,16 +57,16 @@ export default function Skills() {
   return (
     <>
       <StructuredData data={structuredData} />
-      <div className="container mx-auto px-4 py-24">
+      <div className="container mx-auto px-4 py-12">
         <motion.h1 
-          className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-gray-100"
+          className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           My Skills
         </motion.h1>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {skills.map((skillCategory, index) => (
             <motion.div
               key={index}
@@ -83,12 +83,12 @@ export default function Skills() {
           ))}
         </div>
         <motion.div 
-          className="mt-12 text-center"
+          className="mt-8 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <p className="text-lg text-gray-800 dark:text-gray-200">
+          <p className="text-base text-gray-800 dark:text-gray-200">
             GitHub username: <a href="https://github.com/ThulaniMthembu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">@ThulaniMthembu</a>
           </p>
         </motion.div>

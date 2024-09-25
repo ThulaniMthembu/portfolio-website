@@ -87,6 +87,7 @@ export default function Contact() {
     "@type": "ContactPage",
     "name": "Contact Thulani Mthembu",
     "description": "Get in touch with Thulani Mthembu for web development projects and collaborations.",
+    "url": "https://devmajxr.netlify.app/",
     "mainEntity": {
       "@type": "Person",
       "name": "Thulani Mthembu",
