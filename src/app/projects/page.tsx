@@ -6,6 +6,13 @@ import StructuredData from '@/components/StructuredData'
 
 const projects = [
   {
+    title: "Amare Swimwear",
+    description: "Amare Swimwear is a modern e-commerce platform built with Next.js, React, and TypeScript, offering a responsive design, secure user authentication, dynamic product catalog, and seamless checkout process for luxury swimwear enthusiasts.",
+    image: "/images/amare-lp.png",
+    tags: ["Next.js", "React", "TypeScript", "Vercel"],
+    link: "https://amareswimwear.vercel.app/"
+  },
+  {
     title: "Amazin' Glazin' Cakes",
     description: "A Next.js, React, and TypeScript website for a cake shop, featuring a landing page, services section, cake gallery, and sorting/filtering functionality.",
     image: "/images/amazin-lp.png",
