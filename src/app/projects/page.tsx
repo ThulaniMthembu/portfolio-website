@@ -9,7 +9,7 @@ const projects = [
     title: "Amare Swimwear",
     description: "Amare Swimwear is a modern e-commerce platform built with Next.js, React, and TypeScript, offering a responsive design, secure user authentication, dynamic product catalog, and seamless checkout process for luxury swimwear enthusiasts.",
     image: "/images/amare-lp.png",
-    tags: ["Next.js", "React", "TypeScript", "Vercel, Firebase, EmailJS"],
+    tags: ["Next.js", "React", "TypeScript", "Vercel", "Firebase", "EmailJS"],
     link: "https://amareswimwear.vercel.app/"
   },
   {
