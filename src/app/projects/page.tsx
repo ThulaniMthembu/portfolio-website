@@ -13,6 +13,13 @@ const projects = [
     link: "https://amareswimwear.vercel.app/"
   },
   {
+    title: "Namaqualand Environmental",
+    description: "Focused on preserving the unique biodiversity of the Namaqualand region through habitat restoration, sustainable land use practices, and water resource management.",
+    image: "/images/namaqualand-lp.png",
+    tags: ["Next.js", "React", "TypeScript", "Vercel", "EmailJS"],
+    link: "https://namaqualandenv.vercel.app/"
+  },
+  {
     title: "Amazin' Glazin' Cakes",
     description: "A Next.js, React, and TypeScript website for a cake shop, featuring a landing page, services section, cake gallery, and sorting/filtering functionality.",
     image: "/images/amazin-lp.png",
