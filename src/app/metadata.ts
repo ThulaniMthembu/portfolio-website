@@ -11,13 +11,13 @@ export const metadata: Metadata = {
     siteName: 'Thulani Mthembu Portfolio',
     images: [
       {
-        url: 'https://devmajxr.netlify.app/images/logo.png',
+        url: 'https://devmajxr.co.za/images/logo.png',
         width: 800,
         height: 600,
         alt: 'Thulani Mthembu Portfolio',
       },
     ],
-    locale: 'en_US',
+    locale: 'en_ZA',
     type: 'website',
   },
   twitter: {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: 'Explore the portfolio of Thulani Mthembu, a React and web technologies specialist.',
     images: [
       {
-        url: 'https://devmajxr.netlify.app/images/Thulani.jpg',
+        url: 'https://devmajxr.co.za/images/Thulani.jpg',
         alt: 'Thulani Mthembu Portfolio',
       },
     ],
