@@ -6,7 +6,6 @@ import Footer from '@/components/Footer'
 import AnimatedBackground from '@/components/AnimatedBackground'
 import { metadata } from './metadata'
 import ClientLayout from './client-layout'
-import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,10 +23,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta 
-          name="google-site-verification" 
-          content={typeof metadata.verification?.google === 'string' ? metadata.verification.google : undefined} 
-        />
+        <meta name="google-site-verification" content="google523f418b1738107c.html" />
       </head>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider
@@ -47,7 +43,6 @@ export default function RootLayout({
             </div>
           </ClientLayout>
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   )
