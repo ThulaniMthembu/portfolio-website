@@ -1,9 +1,21 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Thulani Mthembu - Web Developer | Dev Majxr',
+  metadataBase: new URL('https://devmajxr.co.za'),
+  title: {
+    default: 'Thulani Mthembu - Web Developer | Dev Majxr',
+    template: '%s | Thulani Mthembu - Dev Majxr'
+  },
   description: 'Welcome to the portfolio of Thulani Mthembu, also known as Dev Majxr, a professional web developer specializing in React, responsive web design, and performance optimization. Explore modern web development projects, resume, and get in touch for collaboration.',
-  keywords: ['Thulani Mthembu', 'Dev Majxr', 'Web Developer', 'React Developer', 'Frontend Developer', 'Responsive Web Design', 'Portfolio', 'JavaScript', 'Modern Web Technologies', 'Thulani Mthembu Portfolio', 'Goku'],
+  keywords: ['Thulani Mthembu', 'Dev Majxr', 'Web Developer', 'React Developer', 'Frontend Developer', 'Responsive Web Design', 'Portfolio', 'JavaScript', 'Modern Web Technologies', 'Full Stack Developer', 'South African Developer'],
+  authors: [{ name: 'Thulani Mthembu', url: 'https://devmajxr.co.za' }],
+  creator: 'Thulani Mthembu',
+  publisher: 'Dev Majxr',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
     title: 'Thulani Mthembu - Web Developer | Dev Majxr',
     description: 'Portfolio of Thulani Mthembu, a web developer specializing in React and modern web technologies.',
@@ -31,6 +43,7 @@ export const metadata: Metadata = {
       },
     ],
     creator: '@devmajxr',
+    site: '@devmajxr',
   },
   robots: {
     index: true,
@@ -43,7 +56,16 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'google523f418b1738107c.html'
+  alternates: {
+    canonical: 'https://devmajxr.co.za',
   },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
+  manifest: '/site.webmanifest',
+  verification: {
+    google: 'google523f418b1738107c.html',
+  },
+  category: 'Web Development',
 }

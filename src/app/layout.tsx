@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import AnimatedBackground from '@/components/AnimatedBackground'
 import { metadata } from './metadata'
 import ClientLayout from './client-layout'
+import { Analytics } from '@vercel/analytics/react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +19,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta 
+          name="google-site-verification" 
+          content={typeof metadata.verification?.google === 'string' ? metadata.verification.google : undefined} 
+        />
+      </head>
+      <body className={`${inter.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -27,13 +38,16 @@ export default function RootLayout({
         >
           <AnimatedBackground />
           <ClientLayout>
-            <Navbar />
-            <main className="min-h-screen pt-16 px-4 sm:px-6 lg:px-8">
-              {children}
-            </main>
-            <Footer />
+            <div className="flex flex-col min-h-screen">
+              <Navbar />
+              <main className="flex-grow pt-16 px-4 sm:px-6 lg:px-8">
+                {children}
+              </main>
+              <Footer />
+            </div>
           </ClientLayout>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
