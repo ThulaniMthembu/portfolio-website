@@ -83,7 +83,8 @@ export default function Home() {
               alt="Thulani Mthembu"
               width={180}
               height={180}
-              className="rounded-full relative z-10"
+              className="rounded-full relative z-10 w-[180px] h-[180px] object-cover"
+              priority
             />
           </motion.div>
           <motion.div variants={itemVariants}>

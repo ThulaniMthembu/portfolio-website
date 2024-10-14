@@ -4,19 +4,21 @@ const nextConfig = {
 	images: {
 		unoptimized: true,
 	},
-	output: 'export',
-	async headers() {
-		return [
-			{
-				source: '/google523f418b1738107c.html',
-				headers: [
-					{
-						key: 'Content-Type',
-						value: 'text/html',
+	webpack: (config) => {
+		config.module.rules.push({
+			test: /\.webmanifest$/,
+			use: [
+				{
+					loader: 'file-loader',
+					options: {
+						name: 'site.webmanifest',
+						publicPath: '/_next',
+						outputPath: 'static/media',
 					},
-				],
-			},
-		];
+				},
+			],
+		});
+		return config;
 	},
 };
 

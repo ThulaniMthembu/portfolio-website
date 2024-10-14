@@ -1,13 +1,9 @@
 {
-  "headers": [
+  "version": 2,
+  "routes": [
     {
-      "source": "/google523f418b1738107c.html",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html"
-        }
-      ]
+      "src": "/google523f418b1738107c.html",
+      "dest": "/google523f418b1738107c.html"
     }
   ]
 }

@@ -8,9 +8,10 @@ interface ProjectCardProps {
   image: string
   tags: string[]
   link: string
+  date: string
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, tags, link }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, tags, link, date }) => {
   return (
     <motion.div 
       className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700 transition-colors duration-300"
@@ -21,9 +22,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, ta
         <Image 
           src={image} 
           alt={title} 
-          layout="fill"
-          objectFit="cover"
-          className="transition-all duration-300 ease-in-out"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-all duration-300 ease-in-out"
         />
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-all duration-300">
           <Link href={link} target="_blank" rel="noopener noreferrer" className="bg-primary text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors">
@@ -41,6 +42,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, ta
             </span>
           ))}
         </div>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          {new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
       </div>
     </motion.div>
   )

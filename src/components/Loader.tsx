@@ -66,6 +66,7 @@ const Loader = ({ onComplete }: { onComplete: () => void }) => {
                 width={192}
                 height={192}
                 className="rounded-full border-4 border-[#fca311]"
+                priority
               />
             </motion.div>
           )}

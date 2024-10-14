@@ -26,15 +26,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AnimatedBackground />
-          <ClientLayout>
-            <div className="flex flex-col min-h-screen">
-              <Navbar />
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <ClientLayout>
               <main className="flex-grow pt-16 px-4 sm:px-6 lg:px-8">
                 {children}
               </main>
-              <Footer />
-            </div>
-          </ClientLayout>
+            </ClientLayout>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
