@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FileDown, Eye } from 'lucide-react';
+import { FileDown, Eye, Code, Smartphone, Zap } from 'lucide-react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import StructuredData from '@/components/StructuredData';
@@ -65,8 +65,24 @@ export default function Home() {
           50% { border-radius: 50% 60% 30% 60% / 30% 70% 50% 60%; }
           75% { border-radius: 60% 40% 60% 30% / 70% 30% 60% 40%; }
         }
-        .wobble-border {
+        @keyframes scale {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.05); }
+        }
+        .blob-container {
+          width: 280px;
+          height: 280px;
           animation: wobble 15s ease-in-out infinite;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .blob-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          animation: scale 15s ease-in-out infinite;
         }
       `}</style>
       <div className="container mx-auto px-4 py-12 flex flex-col justify-between min-h-screen">
@@ -77,15 +93,16 @@ export default function Home() {
           variants={containerVariants}
         >
           <motion.div variants={itemVariants} className="mb-8 relative inline-block">
-            <div className="absolute inset-0 bg-primary opacity-75 wobble-border" style={{ transform: 'scale(1.1)' }}></div>
-            <Image
-              src="/images/Thulani.jpg"
-              alt="Thulani Mthembu"
-              width={180}
-              height={180}
-              className="rounded-full relative z-10 w-[180px] h-[180px] object-cover"
-              priority
-            />
+            <div className="blob-container">
+              <Image
+                src="/images/Thulani.jpg"
+                alt="Thulani Mthembu"
+                width={560}
+                height={560}
+                priority
+                quality={100}
+              />
+            </div>
           </motion.div>
           <motion.div variants={itemVariants}>
             <h1 className="text-4xl md:text-5xl font-bold mb-3 text-foreground-light dark:text-foreground-dark">Thulani Mthembu</h1>
@@ -115,18 +132,16 @@ export default function Home() {
           className="grid md:grid-cols-3 gap-8 mb-16"
         >
           {[
-            { icon: "Code", title: "Clean Code", description: "Writing maintainable and efficient code is my passion." },
-            { icon: "Smartphone", title: "Responsive Design", description: "Creating seamless experiences across all devices." },
-            { icon: "Zap", title: "Performance Optimized", description: "Building fast and optimized web applications." }
+            { icon: Code, title: "Clean Code", description: "Writing maintainable and efficient code is my passion." },
+            { icon: Smartphone, title: "Responsive Design", description: "Creating seamless experiences across all devices." },
+            { icon: Zap, title: "Performance Optimized", description: "Building fast and optimized web applications." }
           ].map((item, index) => (
             <motion.div 
               key={index}
               className="text-center p-6 bg-background-light dark:bg-background-dark text-foreground-light dark:text-foreground-dark rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
               variants={itemVariants}
             >
-              {item.icon === "Code" && <FileDown size={48} className="mx-auto mb-4 text-primary" />}
-              {item.icon === "Smartphone" && <Eye size={48} className="mx-auto mb-4 text-primary" />}
-              {item.icon === "Zap" && <FileDown size={48} className="mx-auto mb-4 text-primary" />}
+              <item.icon size={48} className="mx-auto mb-4 text-primary" />
               <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
               <p>{item.description}</p>
             </motion.div>
