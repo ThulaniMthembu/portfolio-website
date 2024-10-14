@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://devmajxr.co.za'),
@@ -60,12 +60,21 @@ export const metadata: Metadata = {
     canonical: 'https://devmajxr.co.za',
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png' },
+    ],
   },
   manifest: '/site.webmanifest',
   verification: {
-    google: 'google523f418b1738107c.html',
+    google: 'google523f418b1738107c',
   },
   category: 'Web Development',
+  other: {
+    'contact:email': 'thulanim457@gmail.com',
+  },
 }
