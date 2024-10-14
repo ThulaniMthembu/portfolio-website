@@ -100,7 +100,7 @@ export default function Home() {
               <Eye className="mr-2" />
               Explore My Work
             </Link>
-            <a href="/resume/Thulani_Mthembu_Resume.pdf" download className="inline-flex items-center justify-center bg-primary text-foreground-light px-6 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105 w-full sm:w-auto">
+            <a href="/resume/Thulani-Mthembu-Resume.pdf" download className="inline-flex items-center justify-center bg-primary text-foreground-light px-6 py-3 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105 w-full sm:w-auto">
               <FileDown className="mr-2" />
               Download Resume
             </a>
