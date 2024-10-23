@@ -7,12 +7,30 @@ import StructuredData from '@/components/StructuredData'
 
 const projects = [
   {
+    title: "DOT COM MEDIA HOUSE",
+    description: "Innovating the future of media since 2021. Specializing in Advertising, Event Management, and Branding.",
+    image: "/images/dcmh-lp.png",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind", "Vercel", "EmailJS"],
+    link: "https://www.dotcommediahouse.com/",
+    date: "2024-10-20",
+    type: "React"
+  },
+  {
+    title: "Koenana Trading",
+    description: "Leading brand in the construction industry known for quality and innovation.",
+    image: "/images/koenana-lp.png",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind", "Vercel", "EmailJS"],
+    link: "https://www.koenanatrading.co.za/",
+    date: "2024-10-01",
+    type: "React"
+  },
+  {
     title: "Amare Swimwear",
     description: "Amare Swimwear is a modern e-commerce platform built with Next.js, React, and TypeScript, offering a responsive design, secure user authentication, dynamic product catalog, and seamless checkout process for luxury swimwear enthusiasts.",
     image: "/images/amare-lp.png",
     tags: ["Next.js", "React", "TypeScript", "Vercel", "Firebase", "EmailJS"],
     link: "https://amareswimwear.vercel.app/",
-    date: "2023-05-01",
+    date: "2024-09-01",
     type: "E-commerce"
   },
   {
@@ -21,7 +39,7 @@ const projects = [
     image: "/images/namaqualand-lp.png",
     tags: ["Next.js", "React", "TypeScript", "Vercel", "EmailJS"],
     link: "https://namaqualandenv.vercel.app/",
-    date: "2023-04-15",
+    date: "2024-08-01",
     type: "Environmental"
   },
   {
@@ -39,7 +57,7 @@ const projects = [
     image: "/images/ria-skin-care-lp.png",
     tags: ["JavaScript", "Netlify", "E-commerce"],
     link: "https://riaskincare.netlify.app/",
-    date: "2023-02-10",
+    date: "2024-05-01",
     type: "E-commerce"
   },
   {
@@ -48,7 +66,7 @@ const projects = [
     image: "/images/shobafuze-lp.png",
     tags: ["HTML", "CSS", "JavaScript"],
     link: "https://shobafuzeinterprise.netlify.app/",
-    date: "2023-01-05",
+    date: "2024-04-01",
     type: "Transportation"
   },
   {
@@ -57,7 +75,7 @@ const projects = [
     image: "/images/game.png",
     tags: ["HTML", "CSS", "JavaScript"],
     link: "https://xyphora.netlify.app/",
-    date: "2022-12-15",
+    date: "2024-06-01",
     type: "Game"
   }
 ]
