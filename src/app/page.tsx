@@ -95,7 +95,7 @@ export default function Home() {
           <motion.div variants={itemVariants} className="mb-8 relative inline-block">
             <div className="blob-container">
               <Image
-                src="/images/Thulani.jpg"
+                src="/images/Thulani-img.jpg"
                 alt="Thulani Mthembu"
                 width={560}
                 height={560}
