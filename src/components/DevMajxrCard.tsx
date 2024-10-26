@@ -27,17 +27,12 @@ export default function DevMajxrCard() {
   return (
     <>
       <style jsx global>{`
-        @keyframes slideInUp {
-          from {
-            transform: translate3d(0, 100%, 0);
-            visibility: visible;
-          }
-          to {
-            transform: translate3d(0, 0, 0);
-          }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
-        .animate-slideInUp {
-          animation: slideInUp 1.5s ease-out;
+        .animate-fadeIn {
+          animation: fadeIn 1.5s ease-out;
         }
         .animate-fadeOut {
           animation: fadeOut 1s;
@@ -47,7 +42,7 @@ export default function DevMajxrCard() {
           to { opacity: 0; }
         }
       `}</style>
-      <div className={`flex flex-col items-center justify-center min-h-screen bg-gray-900 px-4 py-8 ${isVisible ? 'animate-slideInUp' : 'opacity-0'} ${isFading ? 'animate-fadeOut' : ''}`}>
+      <div className={`flex flex-col items-center justify-center min-h-screen bg-gray-900 px-4 py-8 transition-opacity duration-1000 ${isVisible ? 'animate-fadeIn opacity-100' : 'opacity-0'} ${isFading ? 'animate-fadeOut' : ''}`}>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#fca311] mb-2 text-center">
           Welcome to My Portfolio
         </h1>
