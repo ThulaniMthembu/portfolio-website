@@ -1,15 +1,16 @@
 import './globals.css'
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { ThemeProvider } from "@/components/theme-provider"
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import { ThemeProvider } from '@/components/theme-provider'
 import AnimatedBackground from '@/components/AnimatedBackground'
-import { metadata } from './metadata'
-import ClientLayout from './client-layout'
+import { LoadingProvider } from '@/contexts/LoadingContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export { metadata }
+export const metadata: Metadata = {
+  title: 'Thulani Mthembu | Web Developer',
+  description: 'Thulani Mthembu is a web developer specializing in React and Next.js, creating modern and responsive web applications.',
+}
 
 export default function RootLayout({
   children,
@@ -18,23 +19,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
+      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <AnimatedBackground />
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <ClientLayout>
-              <main className="flex-grow pt-16 px-4 sm:px-6 lg:px-8">
-                {children}
-              </main>
-            </ClientLayout>
-            <Footer />
-          </div>
+          <LoadingProvider>
+            <AnimatedBackground />
+            {children}
+          </LoadingProvider>
         </ThemeProvider>
       </body>
     </html>

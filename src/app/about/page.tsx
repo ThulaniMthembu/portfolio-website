@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import { Award, TrendingUp, Code, Briefcase, GraduationCap, Mail } from 'lucide-react'
 import StructuredData from '@/components/StructuredData'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const AboutSection = ({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) => (
   <motion.div 
@@ -66,7 +68,8 @@ export default function About() {
   return (
     <>
       <StructuredData data={structuredData} />
-      <div className="container mx-auto px-4 py-8 md:py-12">
+      <Navbar />
+      <div className="container mx-auto px-4 py-8 md:py-12 mt-16">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -150,6 +153,7 @@ export default function About() {
           </div>
         </motion.div>
       </div>
+      <Footer />
     </>
   )
 }

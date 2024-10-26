@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://devmajxr.co.za',
+    canonical: 'https://devmajxr.co.za/home',
   },
   icons: {
     icon: [

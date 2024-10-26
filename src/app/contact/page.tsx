@@ -6,6 +6,8 @@ import { MapPin, Phone, Mail, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Toaster from '@/components/Toaster'
 import StructuredData from '@/components/StructuredData'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 type ToasterState = {
   message: string;
@@ -21,7 +23,7 @@ export default function Contact() {
   const [toaster, setToaster] = useState<ToasterState>({ message: '', type: null })
   const [isSending, setIsSending] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
-  
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSending(true)
@@ -124,6 +126,7 @@ export default function Contact() {
   return (
     <>
       <StructuredData data={structuredData} />
+      <Navbar />
       <motion.div 
         className="container mx-auto px-4 py-24 min-h-screen flex items-center"
         initial="hidden"
@@ -159,7 +162,7 @@ export default function Contact() {
               </div>
             </motion.div>
             <motion.div 
-              className="md:w-1/2 p-8 bg-white dark:bg-background-dark"
+              className="md:w-1/2 p-8 bg-white  dark:bg-background-dark"
               variants={itemVariants}
             >
               <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-foreground-dark">Send a Message</h2>
@@ -225,6 +228,7 @@ export default function Contact() {
           />
         )}
       </motion.div>
+      <Footer />
     </>
   )
 }

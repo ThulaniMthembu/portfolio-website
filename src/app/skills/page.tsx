@@ -4,6 +4,8 @@ import { Code, Server, GitBranch, Brain } from 'lucide-react'
 import SkillCard from '@/components/SkillCard'
 import StructuredData from '@/components/StructuredData'
 import { motion } from 'framer-motion'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const skills = [
   {
@@ -57,7 +59,8 @@ export default function Skills() {
   return (
     <>
       <StructuredData data={structuredData} />
-      <div className="container mx-auto px-4 py-12">
+      <Navbar />
+      <div className="container mx-auto px-4 py-12 mt-16">
         <motion.h1 
           className="text-3xl font-bold mb-8 text-center text-gray-900 dark:text-gray-100"
           initial={{ opacity: 0, y: -20 }}
@@ -93,6 +96,7 @@ export default function Skills() {
           </p>
         </motion.div>
       </div>
+      <Footer />
     </>
   )
 }

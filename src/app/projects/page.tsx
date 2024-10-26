@@ -4,6 +4,8 @@ import { useState, useCallback, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import ProjectCard from '@/components/ProjectCard'
 import StructuredData from '@/components/StructuredData'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const projects = [
   {
@@ -44,7 +46,7 @@ const projects = [
   },
   {
     title: "Amazin' Glazin' Cakes",
-    description: "A Next.js, React, and TypeScript website for a cake shop, featuring a landing page, services section, cake gallery, and sorting/filtering functionality.",
+    description: "A Next.js, React, and TypeScript website for a cake shop, featuring a landing page, services section, cake gallery, and sorting/filtering  functionality.",
     image: "/images/amazin-lp.png",
     tags: ["Next.js", "React", "TypeScript", "Netlify"],
     link: "https://amazingcakes.netlify.app/",
@@ -136,69 +138,57 @@ export default function Projects() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 py-24"
     >
       <StructuredData data={structuredData} />
-      <motion.h1 
-        className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-gray-100"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        My Projects
-      </motion.h1>
-      <div className="mb-8 flex flex-wrap justify-center gap-4">
-        {filters.map((filter) => (
-          <button
-            key={filter}
-            onClick={() => setActiveFilter(filter)}
-            className={`px-4 py-2 rounded-full ${
-              activeFilter === filter
-                ? 'bg-primary text-white'
-                : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
-            } transition-colors duration-300`}
-          >
-            {filter}
-          </button>
-        ))}
-      </div>
-      <div className="mb-8 flex justify-center">
-        <select
-          value={activeSort}
-          onChange={(e) => setActiveSort(e.target.value)}
-          className="px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+      <Navbar />
+      <div className="container mx-auto px-4 py-24">
+        <motion.h1 
+          className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-gray-100"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }}
         >
-          <option value="Newest">Newest First</option>
-          <option value="Oldest">Oldest First</option>
-        </select>
-      </div>
-      <motion.div 
-        className="grid md:grid-cols-2 gap-8"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.1
-            }
-          }
-        }}
-      >
-        {filteredProjects.map((project) => (
-          <motion.div
-            key={project.title}
-            variants={{
-              hidden: { y: 20, opacity: 0 },
-              visible: { y: 0, opacity: 1 }
-            }}
-            transition={{ duration: 0.5 }}
+          My Projects
+        </motion.h1>
+        <div className="mb-8 flex flex-wrap justify-center gap-4">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={`px-4 py-2 rounded-full ${
+                activeFilter === filter
+                  ? 'bg-primary text-white'
+                  : 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
+              } transition-colors duration-300`}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+        <div className="mb-8 flex justify-center">
+          <select
+            value={activeSort}
+            onChange={(e) => setActiveSort(e.target.value)}
+            className="px-4 py-2 rounded-full bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
           >
-            <ProjectCard {...project} />
-          </motion.div>
-        ))}
-      </motion.div>
+            <option value="Newest">Newest First</option>
+            <option value="Oldest">Oldest First</option>
+          </select>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+      <Footer />
     </motion.div>
   )
 }
