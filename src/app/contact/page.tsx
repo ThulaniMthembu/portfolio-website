@@ -31,9 +31,17 @@ export default function Contact() {
     const templateIdOwner = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_OWNER
     const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID
 
+    console.log('Environment variables:', { serviceId, templateIdUser, templateIdOwner, userId })
+
     if (serviceId && templateIdUser && templateIdOwner && userId) {
-      emailjs.init(userId)
-      setEmailJSLoaded(true)
+      try {
+        emailjs.init(userId)
+        setEmailJSLoaded(true)
+        console.log('EmailJS initialized successfully')
+      } catch (error) {
+        console.error('Error initializing EmailJS:', error)
+        setToaster({ message: 'Error initializing email service. Please try again later.', type: 'error' })
+      }
     } else {
       console.error('EmailJS environment variables are not set')
       setToaster({ message: 'Configuration error. Please try again later.', type: 'error' })
@@ -61,17 +69,18 @@ export default function Contact() {
     }
 
     try {
-      // Send email to user
-      await emailjs.send(serviceId, templateIdUser, {
+      console.log('Sending email to user...')
+      const userResponse = await emailjs.send(serviceId, templateIdUser, {
         to_email: formRef.current?.reply_to.value,
         from_name: 'Thulani Mthembu',
         message: formRef.current?.message.value,
         from_email: 'thulanim457@gmail.com',
         reply_to: 'thulanim457@gmail.com'
       }, userId)
+      console.log('Email sent to user:', userResponse)
       
-      // Send email to owner
-      await emailjs.send(serviceId, templateIdOwner, {
+      console.log('Sending email to owner...')
+      const ownerResponse = await emailjs.send(serviceId, templateIdOwner, {
         to_name: 'Thulani',
         from_name: formRef.current?.from_name.value,
         from_email: formRef.current?.reply_to.value,
@@ -79,6 +88,7 @@ export default function Contact() {
         message: formRef.current?.message.value,
         reply_to: formRef.current?.reply_to.value
       }, userId)
+      console.log('Email sent to owner:', ownerResponse)
       
       console.log('EmailJS success: Emails sent to user and owner')
       setToaster({ message: 'Message sent successfully!', type: 'success' })
@@ -182,7 +192,7 @@ export default function Contact() {
               </div>
             </motion.div>
             <motion.div 
-              className="md:w-1/2 p-8 bg-white  dark:bg-background-dark"
+              className="md:w-1/2 p-8 bg-white dark:bg-background-dark"
               variants={itemVariants}
             >
               <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-foreground-dark">Send a Message</h2>
