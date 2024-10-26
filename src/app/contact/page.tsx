@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import { MapPin, Phone, Mail, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -23,9 +23,29 @@ export default function Contact() {
   const [toaster, setToaster] = useState<ToasterState>({ message: '', type: null })
   const [isSending, setIsSending] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
+  const [emailJSLoaded, setEmailJSLoaded] = useState(false)
+
+  useEffect(() => {
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+    const templateIdUser = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_USER
+    const templateIdOwner = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_OWNER
+    const userId = process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+
+    if (serviceId && templateIdUser && templateIdOwner && userId) {
+      emailjs.init(userId)
+      setEmailJSLoaded(true)
+    } else {
+      console.error('EmailJS environment variables are not set')
+      setToaster({ message: 'Configuration error. Please try again later.', type: 'error' })
+    }
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (!emailJSLoaded) {
+      setToaster({ message: 'Email service is not available. Please try again later.', type: 'error' })
+      return
+    }
     setIsSending(true)
     
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
