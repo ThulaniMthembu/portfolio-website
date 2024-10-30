@@ -9,6 +9,15 @@ import Footer from '@/components/Footer'
 
 const projects = [
   {
+    title: "Fuzile Zono | Procurement Specialist Portfolio",
+    description: "Responsive Portfolio website built in React, TypeScript and Tailwind CSS. Featured pages: About, Experience, Skills, Education, Training, Contact and Blog page managed by owner.",
+    image: "/images/fuzile-lp.png",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind", "Vercel", "EmailJS", "Firebase"],
+    link: "https://www.fuzilezono.co.za/",
+    date: "2024-10-30",
+    type: "React"
+  },
+  {
     title: "DOT COM MEDIA HOUSE",
     description: "Innovating the future of media since 2021. Specializing in Advertising, Event Management, and Branding.",
     image: "/images/dcmh-lp.png",
