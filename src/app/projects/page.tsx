@@ -32,7 +32,7 @@ const projects = [
     image: "/images/koenana-lp.png",
     tags: ["Next.js", "React", "TypeScript", "Tailwind", "Vercel", "EmailJS"],
     link: "https://www.koenanatrading.co.za/",
-    date: "2024-10-01",
+    date: "2024-10-13",
     type: "React"
   },
   {
@@ -41,7 +41,7 @@ const projects = [
     image: "/images/amare-lp.png",
     tags: ["Next.js", "React", "TypeScript", "Vercel", "Firebase", "EmailJS"],
     link: "https://amareswimwear.vercel.app/",
-    date: "2024-09-01",
+    date: "2024-10-01",
     type: "E-commerce"
   },
   {
@@ -49,8 +49,8 @@ const projects = [
     description: "Focused on preserving the unique biodiversity of the Namaqualand region through habitat restoration, sustainable land use practices, and water resource management.",
     image: "/images/namaqualand-lp.png",
     tags: ["Next.js", "React", "TypeScript", "Vercel", "EmailJS"],
-    link: "https://namaqualandenv.vercel.app/",
-    date: "2024-08-01",
+    link: "https://www.namaquaenvironmental.co.za/",
+    date: "2024-10-17",
     type: "Environmental"
   },
   {
@@ -59,7 +59,7 @@ const projects = [
     image: "/images/amazin-lp.png",
     tags: ["Next.js", "React", "TypeScript", "Netlify"],
     link: "https://amazingcakes.netlify.app/",
-    date: "2023-03-20",
+    date: "2024-09-01",
     type: "Food Service"
   },
   {
@@ -68,7 +68,7 @@ const projects = [
     image: "/images/ria-skin-care-lp.png",
     tags: ["JavaScript", "Netlify", "E-commerce"],
     link: "https://riaskincare.netlify.app/",
-    date: "2024-05-01",
+    date: "2024-08-01",
     type: "E-commerce"
   },
   {
@@ -77,7 +77,7 @@ const projects = [
     image: "/images/shobafuze-lp.png",
     tags: ["HTML", "CSS", "JavaScript"],
     link: "https://shobafuzeinterprise.netlify.app/",
-    date: "2024-04-01",
+    date: "2024-07-01",
     type: "Transportation"
   },
   {
