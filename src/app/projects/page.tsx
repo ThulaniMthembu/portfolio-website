@@ -9,6 +9,15 @@ import Footer from '@/components/Footer'
 
 const projects = [
   {
+    title: "Elegant Matrimony: A Modern Wedding Website",
+    description: "Elegant Matrimony is a personalized wedding website designed to celebrate and simplify a couple’s special day. Featuring a countdown timer to build excitement, the site offers convenience for both the couple and their guests. Guests can RSVP directly on the website, access venue details, and view accommodation recommendations tailored for their stay. A hidden, secure page allows the couple to effortlessly manage their guest list, ensuring a seamless experience for everyone involved.",
+    image: "/images/wedding-lp.png",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind", "Vercel", "Firebase", "Zod"],
+    link: "https://thentshavhenis.vercel.app/",
+    date: "2024-11-15",
+    type: "React"
+  },
+  {
     title: "Fuzile Zono | Procurement Specialist Portfolio",
     description: "Responsive Portfolio website built in React, TypeScript and Tailwind CSS. Featured pages: About, Experience, Skills, Education, Training, Contact and Blog page managed by owner.",
     image: "/images/fuzile-lp.png",
@@ -139,7 +148,7 @@ export default function Projects() {
     }
   };
 
-  const filters = ['All', 'Next.js', 'React', 'TypeScript', 'JavaScript', 'E-commerce', 'Environmental', 'Game']
+  const filters = ['All', 'Next.js', 'React', 'Firebase', 'TypeScript', 'Tailwind', 'JavaScript', 'E-commerce', 'Environmental', 'Game', 'Zod']
 
   return (
     <motion.div 
